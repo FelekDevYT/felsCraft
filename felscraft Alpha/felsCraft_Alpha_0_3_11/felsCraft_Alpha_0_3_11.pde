@@ -10,6 +10,19 @@ public color[] inventory_color = new color[10];
 int current_position = 0;
 int current;
 
+color buffer = block_color[1];
+color bufferUp = block_color[1];
+color bufferDown = block_color[1];
+color bufferRight = block_color[1];
+color bufferLeft = block_color[1];
+
+void setBuffer() {
+  bufferUp = get(playerX+5, playerY-25);
+  bufferDown = get(playerX+10, playerY+25);
+  bufferRight = get(playerX+25, playerY+5);
+  bufferLeft = get(playerX-25, playerY+5);
+}
+
 public int playerX = 280;
 public int playerY = 280;
 
@@ -94,6 +107,7 @@ void draw() {
     generation();
     setColor(color(255, 0, 0));
     show(playerX, playerY);
+    setBuffer();
     ///////CODER PACKS,MODS,ADDONS
     Custom c = new Custom();
     c.Start();
@@ -111,7 +125,7 @@ void draw() {
   text("felsCraft "+version, screnWidth -150, screnHeight-100);
   stroke(block_color[8]);
   fill(block_color[8]);
-  show(screnWidth-50, 10);
+  show(screnWidth-25, 10);
   fill(255, 255, 255);
   text("FPS: "+((int) frameRate), screnWidth-50, 20);
   //
@@ -120,19 +134,19 @@ void draw() {
   if (keyPressed) {
     if (keyCode == UP) {
       setColor(block_color[current]);
-      show(playerX, playerY-40);
+      show(playerX, playerY-BLOCK_SIZE);
     }
     if (keyCode == DOWN) {
       setColor(block_color[current]);
-      show(playerX, playerY+40);
+      show(playerX, playerY+BLOCK_SIZE);
     }
     if (keyCode == RIGHT) {
       setColor(block_color[current]);
-      show(playerX+40, playerY);
+      show(playerX+BLOCK_SIZE, playerY);
     }
     if (keyCode == LEFT) {
       setColor(block_color[current]);
-      show(playerX-40, playerY);
+      show(playerX-BLOCK_SIZE, playerY);
     }
     if (key == 't' || key == 'T') {
       terminal();
@@ -143,39 +157,59 @@ void draw() {
       delay(100);
     }
     if (key == 'w' || key == 'W') {
-      stroke(block_color[8]);
-      fill(block_color[8]);
+      setColor(buffer);
+      if (buffer == block_color[8]) {
+        stroke(block_color[8]);
+        fill(block_color[8]);
+      }
       show(playerX, playerY);
       setColor(color(255, 0, 0));
-      show(playerX, playerY-40);
-      playerY-=40;
+      show(playerX, playerY-BLOCK_SIZE);
+      buffer=bufferUp;
+      setBuffer();
+      playerY-=BLOCK_SIZE;
       delay(100);
     }
     if (key == 's' || key == 'S') {
-      stroke(block_color[8]);
-      fill(block_color[8]);
+      buffer=bufferDown;
+      setBuffer();
+      setColor(buffer);
+      if (buffer == block_color[8]) {
+        stroke(block_color[8]);
+        fill(block_color[8]);
+      }
       show(playerX, playerY);
       setColor(color(255, 0, 0));
-      show(playerX, playerY+40);
-      playerY+=40;
+      show(playerX, playerY+BLOCK_SIZE);
+      playerY+=BLOCK_SIZE;
       delay(100);
     }
     if (key == 'a' || key == 'A') {
-      stroke(block_color[8]);
-      fill(block_color[8]);
+      setColor(buffer);
+      if (buffer == block_color[8]) {
+        stroke(block_color[8]);
+        fill(block_color[8]);
+      }
       show(playerX, playerY);
       setColor(color(255, 0, 0));
-      show(playerX-40, playerY);
-      playerX-=40;
+      show(playerX-BLOCK_SIZE, playerY);
+      buffer=bufferLeft;
+      setBuffer();
+      playerX-=BLOCK_SIZE;
       delay(100);
     }
     if (key == 'd' || key == 'D') {
-      stroke(block_color[8]);
-      fill(block_color[8]);
+      buffer=bufferRight;
+      setBuffer();
+      setColor(buffer);
+      if (buffer == block_color[8]) {
+        stroke(block_color[8]);
+        fill(block_color[8]);
+      }
       show(playerX, playerY);
       setColor(color(255, 0, 0));
-      show(playerX+40, playerY);
-      playerX+=40;
+      show(playerX+BLOCK_SIZE, playerY);
+      playerX+=BLOCK_SIZE;
       delay(100);
     }
   }
@@ -184,7 +218,7 @@ void draw() {
 
 //The seconds metods
 void show(int startX, int startY) {
-  rect(startX, startY, 40, 40);
+  rect(startX, startY, BLOCK_SIZE, BLOCK_SIZE);
 }
 
 void setColor(color col) {

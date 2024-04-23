@@ -6,7 +6,6 @@ class Custom implements BSL_mod {
   }
 
   public void mod() {
-    println("Fels mod loaded!");
     basic.registration_block((byte)10, "tea", color(0, 64, 0));
     basic.generation_block((byte)10, (byte)6, 0, 14);
   }

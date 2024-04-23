@@ -39,12 +39,12 @@ public class BSL {
           fill(block_color[ID]);
           show(x, y);
         } else {
-          x+=40;
+          x+=BLOCK_SIZE;
         }
         x+=40;
       }
       x=1;
-      y-=40;
+      y-=BLOCK_SIZE;
     }
   }
 

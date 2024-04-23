@@ -20,11 +20,11 @@ public void generation() {
  */
 
 void plains() {
-  int bc = screnWidth / 40;
+  int bc = screnWidth / BLOCK_SIZE;
   int cw = 1, test = 0;
   int[] weidth = new int[bc];
   while (test < bc) {
-    weidth[test] =(int) random(8, 10);
+    weidth[test] =(int) random(15,20);
     ++test;
   }
   int x = 0, y = screnHeight - 80;
@@ -32,23 +32,23 @@ void plains() {
   for (int i = 0; i < bc; i++) {
     for (test = 0; test < weidth[i]; test++) {
       if (cw >= 1) setColor(block_color[1]);
-      if (cw >= rand(4, 5)) setColor(block_color[9]);
-      if (cw >= 7) setColor(block_color[0]);
+      if (cw >= rand(10,13)) setColor(block_color[9]);
+      if (cw >= rand(15,18)) setColor(block_color[0]);
       //Generation the ores
       //Iron
-      if (cw<=8 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
+      if (cw<=10 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
         setColor(block_color[2]);
       }
       //Gold
-      if (cw <= 6 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
+      if (cw <= 8 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
         setColor(block_color[3]);
       }
       //Diamond
-      if (cw <= 4 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
+      if (cw <= 7 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
         setColor(block_color[4]);
       }
       show(x, y);
-      y-=40;
+      y-=BLOCK_SIZE;
       cw++;
       randomIron[0]=(int)random(1, 5);
       randomIron[1]=(int)random(1, 3);
@@ -64,7 +64,7 @@ void plains() {
       randomDiamond[3]=(int)random(1, 5);
     }
     y=screnHeight-80;
-    x+=40;
+    x+=BLOCK_SIZE;
     cw=1;
   }
 }
@@ -72,7 +72,7 @@ void plains() {
 void mountains() {
   int coord=rand(0, screnWidth);
   while (true) {
-    if (coord%40 == 0) {
+    if (coord%BLOCK_SIZE == 0) {
       break;
     }
     coord++;
@@ -81,7 +81,7 @@ void mountains() {
   int cw = 1, test = 0;
   int[] weidth = new int[6];
   while (test < bc) {
-    weidth[test] =(int) random(10, 14);
+    weidth[test] =(int) random(18,24);
     ++test;
   }
   int x = 0, y = screnHeight - 80;
@@ -90,24 +90,24 @@ void mountains() {
   for (int i = 0; i < bc; i++) {
     for (test = 0; test < weidth[i]; test++) {
       if (cw >= 1) setColor(block_color[1]);
-      if (cw >= rand(4, 5)) setColor(block_color[9]);
-      if (cw >= 7) setColor(block_color[0]);
-      if (cw >= rand(8, 10)) setColor(block_color[5]);
+      if (cw >= rand(10,14)) setColor(block_color[9]);
+      if (cw >= 15) setColor(block_color[0]);
+      if (cw >= rand(16,18)) setColor(block_color[5]);
       //Generation the ores
       //Iron
-      if (cw<=8 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
+      if (cw<=13 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
         setColor(block_color[2]);
       }
       //Gold
-      if (cw <= 6 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
+      if (cw <= 11 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
         setColor(block_color[3]);
       }
       //Diamond
-      if (cw <= 4 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
+      if (cw <= 10 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
         setColor(block_color[4]);
       }
       show(x, y);
-      y-=40;
+      y-=BLOCK_SIZE;
       cw++;
       randomIron[0]=(int)random(1, 5);
       randomIron[1]=(int)random(1, 3);
@@ -123,7 +123,7 @@ void mountains() {
       randomDiamond[3]=(int)random(1, 5);
     }
     y=screnHeight-80;
-    x+=40;
+    x+=BLOCK_SIZE;
     cw=1;
   }
 }
@@ -132,7 +132,7 @@ void mountains() {
 void forest() {
   int coord=rand(0, screnWidth);
   while (true) {
-    if (coord%40 == 0) {
+    if (coord%BLOCK_SIZE == 0) {
       break;
     }
     coord++;
@@ -141,7 +141,7 @@ void forest() {
   int cw = 1, test = 0;
   int[] weidth = new int[6];
   while (test < bc) {
-    weidth[test] =(int) random(6, 10);
+    weidth[test] =(int) random(15,20);
     ++test;
   }
   int x = 0, y = screnHeight - 80;
@@ -150,23 +150,23 @@ void forest() {
   for (int i = 0; i < bc; i++) {
     for (test = 0; test < weidth[i]; test++) {
       if (cw >= 1) setColor(block_color[1]);
-      if (cw >= rand(4, 5)) setColor(block_color[9]);
-      if (cw >= rand(5, 7)) setColor(block_color[0]);
+      if (cw >= rand(10,13)) setColor(block_color[9]);
+      if (cw >= rand(15,18)) setColor(block_color[0]);
       //Generation the ores
       //Iron
-      if (cw<=8 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
+      if (cw<=11 && randomIron[0] == randomIron[1] && randomIron[2] == randomIron[3]) {
         setColor(block_color[2]);
       }
       //Gold
-      if (cw <= 6 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
+      if (cw <= 9 && randomGold[0] == randomGold[1] && randomGold[2] == randomGold[3]) {
         setColor(block_color[3]);
       }
       //Diamond
-      if (cw <= 4 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
+      if (cw <= 8 && randomDiamond[0] == randomDiamond[1] && randomDiamond[2] == randomDiamond[3]) {
         setColor(block_color[4]);
       }
       show(x, y);
-      y-=40;
+      y-=BLOCK_SIZE;
       cw++;
       randomIron[0]=(int)random(1, 5);
       randomIron[1]=(int)random(1, 3);
@@ -182,16 +182,16 @@ void forest() {
       randomDiamond[3]=(int)random(1, 5);
     }
     y=screnHeight-80;
-    x+=40;
+    x+=BLOCK_SIZE;
     cw=1;
   }
   int r = rand(3, 5);
   for (int i = 0; i <r; i++) {
     int rnd = rand(coord, coord+200);
-    while (rnd%40 != 0 ) {
+    while (rnd%BLOCK_SIZE != 0 ) {
       rnd++;
     }
-    Tree(rnd, 280);
+    Tree(rnd, 300);
   }
 }
 
@@ -207,10 +207,9 @@ void structures() {
 void Tree(int x, int y) {
   setColor(block_color[6]);
   show(x, y);
-  show(x, y+40);
+  show(x, y+BLOCK_SIZE);
   setColor(block_color[7]);
-  show(x, y-40);
-  show(x, y-80);
-  show(x-40, y-40);
-  show(x+40, y-40);
+  show(x, y-BLOCK_SIZE);
+  show(x-BLOCK_SIZE, y-BLOCK_SIZE);
+  show(x+BLOCK_SIZE, y-BLOCK_SIZE);
 }
