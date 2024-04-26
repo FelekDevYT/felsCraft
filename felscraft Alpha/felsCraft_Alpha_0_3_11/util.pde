@@ -1,5 +1,7 @@
 import javax.swing.*;
 
+
+
 void terminal() {
   JFrame parentFrame = new JFrame();
   parentFrame.setAlwaysOnTop(true);
@@ -16,7 +18,7 @@ void terminal() {
     inventory[current_position] = block_name[Integer.parseInt(line[1])];
     inventory_color[current_position] = block_color[Integer.parseInt(line[1])];
   }
-  catch(ArrayIndexOutOfBoundsException ex) {
+  catch(Exception ex) {
     println("Exception:block not found!");
   }
   try {

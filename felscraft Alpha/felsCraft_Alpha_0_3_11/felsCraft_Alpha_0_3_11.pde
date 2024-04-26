@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public static String[] block_name = new String[31];
 public color[] block_color = new color[31];
@@ -9,19 +9,6 @@ public String[] inventory = new String[10];
 public color[] inventory_color = new color[10];
 int current_position = 0;
 int current;
-
-color buffer = block_color[1];
-color bufferUp = block_color[1];
-color bufferDown = block_color[1];
-color bufferRight = block_color[1];
-color bufferLeft = block_color[1];
-
-void setBuffer() {
-  bufferUp = get(playerX+5, playerY-25);
-  bufferDown = get(playerX+10, playerY+25);
-  bufferRight = get(playerX+25, playerY+5);
-  bufferLeft = get(playerX-25, playerY+5);
-}
 
 public int playerX = 280;
 public int playerY = 280;
@@ -49,6 +36,10 @@ void settings() {
   block_color[8] = #7fc9fa;
   block_name[9] = "dirt";
   block_color[9] = color(188, 104, 0);
+  block_name[10] = "water";
+  block_color[10] = color(17, 156, 209);
+  block_name[11] = "sand";
+  block_color[11] = color(230, 200, 0);
   inventory[0] = "Null";
   inventory[1] = "Null";
   inventory[2] = "Null";
@@ -107,10 +98,7 @@ void draw() {
     generation();
     setColor(color(255, 0, 0));
     show(playerX, playerY);
-    setBuffer();
     ///////CODER PACKS,MODS,ADDONS
-    Custom c = new Custom();
-    c.Start();
   }
   if (playerY > screnHeight-80) {
     playerY = 120;
@@ -148,64 +136,44 @@ void draw() {
       setColor(block_color[current]);
       show(playerX-BLOCK_SIZE, playerY);
     }
-    if (key == 't' || key == 'T') {
+    if (key == 't' || key == 'T' ||key == 'е'||key == 'Е') {
       terminal();
     }
-    if (key == 'l' || key =='L') {
+    if (key == 'l' || key =='L'||key == 'д'||key == 'Д') {
       background(block_color[8]);
       generation();
       delay(100);
     }
-    if (key == 'w' || key == 'W') {
-      setColor(buffer);
-      if (buffer == block_color[8]) {
-        stroke(block_color[8]);
-        fill(block_color[8]);
-      }
+    if (key == 'w' || key == 'W'||key == 'ц'||key == 'Ц') {
+      stroke(block_color[8]);
+      fill(block_color[8]);
       show(playerX, playerY);
       setColor(color(255, 0, 0));
       show(playerX, playerY-BLOCK_SIZE);
-      buffer=bufferUp;
-      setBuffer();
       playerY-=BLOCK_SIZE;
       delay(100);
     }
-    if (key == 's' || key == 'S') {
-      buffer=bufferDown;
-      setBuffer();
-      setColor(buffer);
-      if (buffer == block_color[8]) {
-        stroke(block_color[8]);
-        fill(block_color[8]);
-      }
+    if (key == 's' || key == 'S'||key == 'ы'||key == 'Ы') {
+      stroke(block_color[8]);
+      fill(block_color[8]);
       show(playerX, playerY);
       setColor(color(255, 0, 0));
       show(playerX, playerY+BLOCK_SIZE);
       playerY+=BLOCK_SIZE;
       delay(100);
     }
-    if (key == 'a' || key == 'A') {
-      setColor(buffer);
-      if (buffer == block_color[8]) {
-        stroke(block_color[8]);
-        fill(block_color[8]);
-      }
+    if (key == 'a' || key == 'A'||key == 'ф'||key == 'Ф') {
+      stroke(block_color[8]);
+      fill(block_color[8]);
       show(playerX, playerY);
       setColor(color(255, 0, 0));
       show(playerX-BLOCK_SIZE, playerY);
-      buffer=bufferLeft;
-      setBuffer();
       playerX-=BLOCK_SIZE;
       delay(100);
     }
-    if (key == 'd' || key == 'D') {
-      buffer=bufferRight;
-      setBuffer();
-      setColor(buffer);
-      if (buffer == block_color[8]) {
-        stroke(block_color[8]);
-        fill(block_color[8]);
-      }
+    if (key == 'd' || key == 'D'||key == 'в'||key == 'В') {
+      stroke(block_color[8]);
+      fill(block_color[8]);
       show(playerX, playerY);
       setColor(color(255, 0, 0));
       show(playerX+BLOCK_SIZE, playerY);

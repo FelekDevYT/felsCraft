@@ -1,5 +1,5 @@
 ////
-public static final String version = "0.4.1 all the develophment";
+public static final String version = "0.4.2 WATER!";
 public static final String title = "felsCraft game "+version;
 int screnWidth = 1280;//1280;
 int screnHeight = 720;
