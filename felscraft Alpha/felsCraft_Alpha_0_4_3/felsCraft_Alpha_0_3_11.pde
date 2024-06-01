@@ -4,7 +4,7 @@ public static String[] block_name = new String[31];
 public color[] block_color = new color[31];
 int[] randomIron = {(int)random(1, 5), (int)random(1, 3), (int)random(1, 4), (int)random(1, 2)};
 int[] randomGold = {(int)random(1, 7), (int)random(1, 5), (int)random(1, 4), (int)random(1, 3)};
-int[] randomDiamond = {(int)random(1, 12), (int)random(1, 2), (int)random(1, 3), (int)random(1, 5)};
+int[] randomDiamond = {(int)random(1, 8), (int)random(1, 2), (int)random(1, 3), (int)random(1, 3)};
 public String[] inventory = new String[10];
 public color[] inventory_color = new color[10];
 int current_position = 0;
@@ -83,6 +83,10 @@ void drawInventory() {
   rect(screnWidth/3+320, screnHeight-60, 40, 40);
   setColor(inventory_color[9]);
   rect(screnWidth/3+360, screnHeight-60, 40, 40);
+  /////////DRAVING THE SELECTED SECTION
+  stroke(143, 123, 255);
+  fill(inventory_color[current]);
+  rect(screnWidth/3+(current*40), screnHeight-60, 40, 40);
 }
 
 void setup() {
@@ -101,18 +105,19 @@ void draw() {
     ///////CODER PACKS,MODS,ADDONS
     Custom c = new Custom();
     c.Start();
+    i++;
   }
   if (playerY > screnHeight-80) {
     playerY = 120;
+    playerX = 120;
   }
   setColor(block_color[1]);
   rect(0, screnHeight-80, screnWidth, 80);
-  i++;
   drawInventory();
   stroke(256, 256, 256);
   fill(256, 256, 256);
   text("@Coopyright FelsStudio", 10, 10);
-  text("felsCraft "+version, screnWidth -150, screnHeight-100);
+  text("felsCraft "+version, 10,30);
   stroke(block_color[8]);
   fill(block_color[8]);
   show(screnWidth-25, 10);
@@ -139,6 +144,10 @@ void draw() {
       current=6;
     } else if (key == '8') {
       current=7;
+    } else if (key == '9') {
+      current=8;
+    } else if (key == '0') {
+      current=9;
     }
     //making and building blocks
     else if (keyCode == UP) {
@@ -169,28 +178,28 @@ void draw() {
       show(playerX, playerY);
       showPlayer(playerX, playerY-BLOCK_SIZE);
       playerY-=BLOCK_SIZE;
-      delay(80);
+      delay(SWITCH_DELEAY);
     } else if (key == 's' || key == 'S'||key == 'ы'||key == 'Ы') {
       stroke(block_color[8]);
       fill(block_color[8]);
       show(playerX, playerY);
       showPlayer(playerX, playerY+BLOCK_SIZE);
       playerY+=BLOCK_SIZE;
-      delay(80);
+      delay(SWITCH_DELEAY);
     } else if (key == 'a' || key == 'A'||key == 'ф'||key == 'Ф') {
       stroke(block_color[8]);
       fill(block_color[8]);
       show(playerX, playerY);
       showPlayer(playerX-BLOCK_SIZE, playerY);
       playerX-=BLOCK_SIZE;
-      delay(80);
+      delay(SWITCH_DELEAY);
     } else if (key == 'd' || key == 'D'||key == 'в'||key == 'В') {
       stroke(block_color[8]);
       fill(block_color[8]);
       show(playerX, playerY);
       showPlayer(playerX+BLOCK_SIZE, playerY);
       playerX+=BLOCK_SIZE;
-      delay(80);
+      delay(SWITCH_DELEAY);
     }
   }
 }
@@ -202,7 +211,7 @@ void show(int startX, int startY) {
 }
 
 void setColor(color col) {
-  stroke(42, 42, 42);
+  stroke(70,70,70);//42,42,42
   fill(col);
 }
 

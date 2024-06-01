@@ -140,16 +140,10 @@ void sea() {
   }
   fill(block_color[8]);
   stroke(block_color[8]);
-  rect(coord, 0, 120, 10000);
+  rect(coord, screnHeight - 120, 120, 10000);
   int bc = 6;
   int cw = 1, test = 0;
   int x = 0, y = screnHeight - 80;
-  x=coord;
-  setColor(block_color[11]);
-  for(int i = 0;i< 8;i++){
-    show(x,screnHeight-120);
-    x+=20;
-  }
   x=coord;
   setColor(block_color[0]);
   for (int i = 0; i < bc; i++) {
@@ -175,6 +169,13 @@ void sea() {
     y=screnHeight-80;
     x+=BLOCK_SIZE;
     cw=1;
+  }
+  //sand generation
+  x=coord;
+  setColor(block_color[11]);
+  for (int i = 0; i< 6; i++) {
+    show(x, screnHeight-160);
+    x+=20;
   }
 }
 
@@ -234,18 +235,18 @@ void forest() {
     x+=BLOCK_SIZE;
     cw=1;
   }
-  int r = rand(3, 5);
+  int r = rand(3, 4);
   for (int i = 0; i <r; i++) {
     int rnd = rand(coord, coord+200);
     while (rnd%BLOCK_SIZE != 0 ) {
       rnd++;
     }
-    Tree(rnd, 320);
+    Tree(rnd, 300);
   }
 }
 
 void structures() {
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 8; i++) {
     int coord = rand(0, screnWidth);
     while (coord%BLOCK_SIZE != 0) {
       coord++;
@@ -257,7 +258,6 @@ void structures() {
     while (coord%BLOCK_SIZE != 0) {
       coord++;
     }
-    
   }
 }
 
